@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <title>Note List</title>
+</head>
+<body>
+
+<h1>Delete Node</h1>
+<table>
+    <tbody>
+
+        <tr>
+            <form th:action="@{/note/delete}" method="POST">
+            <td>
+            </td><th>ID</th>
+            <td>
+                <input type="text" id="id" name="id" >
+                <input type="submit" value="delete"/>
+                <a th:href="@{/note/list}">list</a>
+            </td>
+                </form>
+        </tr>
+
+    </tbody></table>
+</body></html>
