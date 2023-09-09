@@ -5,37 +5,31 @@
 <body>
 
 <h1>Edit Node</h1>
-<table>
-    <tbody>
-    <form th:action="@{/note/edit}" method="POST">
+<form th:action="@{/note/edit}" method="POST">
+    <table>
+        <tbody>
         <tr>
-            <td>
-            </td><th>ID</th>
-            <td>
-                <input type="text" id="id" name="id" >
-            </td>
+            <td><th>ID</th></td>
+            <td><input type="text" id="id" name="id" /></td>
         </tr>
         <tr>
-            <td>
-            </td><th>Title</th>
-            <td>
-                <input type="text" name="title" id="title">
-            </td>
+            <td><th>Title</th></td>
+            <td><input type="text" name="title" id="title" /></td>
         </tr>
+        <tr>
+            <td><th>Content</th></td>
+            <td><input type="text" name="content" id="content" /></td>
+        </tr>
+        <tr>
+            <td></td><td></td>
+            <td>
 
-        <tr>
-            <td>
-            </td><th>Content</th>
-            <td>
-                <input type="text" name="content" id="content" >
+                <button><a th:href="@{/note/list}">Edit</a> </button>
+                
             </td>
         </tr>
-        <tr><td></td><td></td>
-            <td>
-                <input type="submit" value="Create"/>
-                <a th:href="@{/note/list}">list</a>
-            </td>
-        </tr>
-    </form>
+        </tbody>
+    </table>
+</form>
     </tbody></table>
 </body></html>
