@@ -7,19 +7,19 @@
 <h1>Create New Node</h1>
 <table>
     <tbody>
-    <form  method="POST">
+    <form    method="POST">
     <tr>
         <td>
         </td><th>ID</th>
         <td>
-            <input type="text" id="id" name="id" >
+            <input type="text" id="id" name="id" />
         </td>
     </tr>
     <tr>
         <td>
         </td><th>Title</th>
         <td>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title"/>
         </td>
     </tr>
 
@@ -27,7 +27,7 @@
         <td>
         </td><th>Content</th>
         <td>
-            <input type="text" name="content" id="content" >
+            <input type="text" name="content" id="content" />
         </td>
     </tr>
     <tr><td></td><td></td>
@@ -52,8 +52,10 @@
         <td></td>
         <td>
 
-            <a th:href="@{/note/edit}">Edit</a>
-            <a th:href="@{/note/delete(id=${note.id})}">Delete</a>
+            <button><a th:href="@{/note/edit(id=${note.id})}">Edit</a> </button>
+            <button><a method="post" th:href="@{/note/delete(id=${note.id})}">Delete</a></button>
+
+
         </td>
     </tr>
     </tbody>
