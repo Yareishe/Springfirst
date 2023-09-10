@@ -36,6 +36,7 @@ public class NoteServicelmpl implements NoteService {
 
     @Override
     public void update(Note note) {
+        notesMap.put(note.getId(),note);
 
     }
 
