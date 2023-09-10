@@ -5,12 +5,12 @@
 <body>
 
 <h1>Edit Node</h1>
-<form th:action="@{/note/edit}" method="POST">
+<form th:action="@{/note/edit}" method="POST" th:object="${note}">
     <table>
         <tbody>
         <tr>
             <td><th>ID</th></td>
-            <td><input type="text" id="id" name="id" /></td>
+            <input type="hidden" th:field="*{id}" />
         </tr>
         <tr>
             <td><th>Title</th></td>
@@ -23,13 +23,13 @@
         <tr>
             <td></td><td></td>
             <td>
+                <input type="submit" value="Edit"/>
 
-                <button><a th:href="@{/note/list}">Edit</a> </button>
-                
+
             </td>
         </tr>
         </tbody>
     </table>
 </form>
-    </tbody></table>
+</tbody></table>
 </body></html>
