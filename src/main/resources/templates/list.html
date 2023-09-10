@@ -4,39 +4,8 @@
 </head>
 <body>
 
-<h1>Create New Node</h1>
-<table>
-    <tbody>
-    <form    method="POST">
-    <tr>
-        <td>
-        </td><th>ID</th>
-        <td>
-            <input type="text" id="id" name="id" />
-        </td>
-    </tr>
-    <tr>
-        <td>
-        </td><th>Title</th>
-        <td>
-            <input type="text" name="title" id="title"/>
-        </td>
-    </tr>
+<button><a th:href="@{/note/add}">Create New Node</a> </button>
 
-    <tr>
-        <td>
-        </td><th>Content</th>
-        <td>
-            <input type="text" name="content" id="content" />
-        </td>
-    </tr>
-    <tr><td></td><td></td>
-        <td>
-        <input type="submit" value="Create"/>
-        </td>
-    </tr>
-    </form>
-    </tbody></table>
 <h1>Note List</h1>
 <table>
 
