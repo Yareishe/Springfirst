@@ -20,11 +20,14 @@
         <td th:text="${note.content}"></td>
         <td></td>
         <td>
-
+        <td>
             <button><a th:href="@{/note/edit(id=${note.id})}">Edit</a> </button>
-            <button><a method="post" th:href="@{/note/delete(id=${note.id})}">Delete</a></button>
-
-
+        </td>
+        <td>
+            <form th:action="@{'/note/delete?id=' + ${note.id}}" method="post">
+                <input type="submit" class="btn btn-danger" value="Delete"/>
+            </form>
+        </td>
         </td>
     </tr>
     </tbody>
