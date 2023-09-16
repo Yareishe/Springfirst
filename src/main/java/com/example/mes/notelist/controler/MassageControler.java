@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @Controller()
 @RequestMapping("/note")
@@ -44,14 +47,14 @@ public class MassageControler {
     @PostMapping("/add")
     public String addpostNotes(@ModelAttribute("note") Note note, Model model) {
         Note newNode = new Note(id,note.getTitle(),note.getContent());
-        noteServicelmpl.update(newNode);
+        noteServicelmpl.add(note);
         id++;
         return "redirect:/note/list";
     }
 
     @GetMapping("/edit")
     public String editeNotes(@RequestParam("id") Long id, Model model) {
-        Note newNote1 = noteServicelmpl.getById(id);
+        Optional<Note> newNote1 = noteServicelmpl.getById(id);
         model.addAttribute("note", newNote1);
         return "edit";
     }
@@ -59,12 +62,9 @@ public class MassageControler {
     @PostMapping("/edit")
     public String editNotes(@ModelAttribute("note") Note note, Model model) {
 
-        Note newNote = noteServicelmpl.getById(note.getId());
-        newNote.setTitle(note.getTitle());
-        newNote.setContent(note.getContent());
-        noteServicelmpl.update(newNote);
+        noteServicelmpl.update(note);
 
-        model.addAttribute("note", newNote);
+        model.addAttribute("note", note);
         return "redirect:/note/list";
     }
 
