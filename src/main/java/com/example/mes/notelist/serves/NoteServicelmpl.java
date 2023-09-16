@@ -2,17 +2,21 @@ package com.example.mes.notelist.serves;
 
 
 import com.example.mes.notelist.entity.Note;
+import com.example.mes.notelist.repo.NoteRepository;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 
 
 @Service
+@Data
+@RequiredArgsConstructor
 public class NoteServicelmpl implements NoteService {
 
+    private final NoteRepository noteRepository;
 
     public Map<Long, Note> notesMap = new HashMap<>();
     public Long avtoid = 1L;
@@ -21,29 +25,28 @@ public class NoteServicelmpl implements NoteService {
     @Override
     public List<Note> listAll() {
 
-        return new ArrayList<>(notesMap.values()) ;
+        return new ArrayList<>(noteRepository.findAll()) ;
     }
     @Override
     public Note add(Note note) {
+
         notesMap.put(note.getId(),note);
-        return note;
+        return noteRepository.save(note);
     }
 
     @Override
     public void deleteById(long id) {
-        notesMap.remove(id);
+        noteRepository.deleteById(id);
+
     }
 
     @Override
     public void update(Note note) {
-        notesMap.put(note.getId(),note);
-
+        noteRepository.save(note);
     }
 
     @Override
-    public Note getById(long id) {
-        return notesMap.get(id);
+    public Optional<Note> getById(long id) {
+        return noteRepository.findById(id);
     }
-
-
 }
