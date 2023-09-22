@@ -1,5 +1,7 @@
 package com.example.mes.notelist.controler;
 
+
+import com.example.mes.notelist.repo.UserRepository;
 import com.example.mes.notelist.serves.NoteServicelmpl;
 import com.example.mes.notelist.entity.Note;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -18,7 +19,8 @@ public class MassageControler {
 
 
     private NoteServicelmpl noteServicelmpl;
-    private Long id = 1L;
+
+    private UserRepository userRepository;
 
     public MassageControler(NoteServicelmpl noteServicelmpl) {
         this.noteServicelmpl = noteServicelmpl;
@@ -30,8 +32,6 @@ public class MassageControler {
         model.addAttribute("notes", noteServicelmpl.listAll());
         return "list";
     }
-
-
 
     @PostMapping(value = "/delete")
     public String deleteNotes(@RequestParam Long id) {
@@ -46,9 +46,7 @@ public class MassageControler {
 
     @PostMapping("/add")
     public String addpostNotes(@ModelAttribute("note") Note note, Model model) {
-        Note newNode = new Note(id,note.getTitle(),note.getContent());
         noteServicelmpl.add(note);
-        id++;
         return "redirect:/note/list";
     }
 
@@ -72,3 +70,4 @@ public class MassageControler {
 
 
 }
+
